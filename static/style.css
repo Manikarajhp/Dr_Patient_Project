@@ -1,0 +1,507 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Poppins , sans-serif;
+    font-size: 1em;
+}
+body{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    /* background-image: url('Sample_Pictures/Bg-img.jpg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.header{
+    width: 100vw;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px ridge gray;
+}
+.header-web-name{
+    font-size: 1.5em;
+    margin-left: 20px;
+    color: black;
+}
+sub{
+    font-size: small;
+    font-weight: lighter;
+    letter-spacing: 1px;
+}
+.header-login-button{
+    width: 150px;
+    height: 30px;
+    margin-right: 20px;
+    border-radius: 5px;
+    background-color: rgb(62, 62, 255);
+    color: white;
+    border: 1px solid black;
+    font-size: 14px;
+    transition: 0.5s;
+}
+.header-login-button:hover, .section-login-button:hover{
+    transform: scale(1.1);
+}
+/* HEADERCOMPLETED-COMMON FOR ALL------------------------------------------------------------------------ */
+
+.section{
+    width: 100vw;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.section-container{
+    display: block;
+}
+.section-quote{
+    font-size: 28px;
+}
+.section-login-button{
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    margin-top: 20px;
+    background-color: rgb(62, 62, 255);
+    color: white;
+    border: 1px solid black;
+    font-size: 14px;  
+    transition: 0.5s;
+}
+/* HIDDENFORMSSTYLE---------------------------------------------------------------------------- */
+
+.hidden-login-page-frame, .hidden-signup-page-frame{
+    width: 100vw;
+    height: 700px;
+}
+.hidden-login-page-card, .hidden-signup-page-card{
+    width: 300px;
+    height: 500px;
+    border-radius: 5px;
+    background: linear-gradient(to top left,rgb(92, 92, 255),magenta);
+    box-shadow: 0px 0px 10px 1px rgb(73, 72, 72);
+    
+}
+input::placeholder, input[type='email'],input[type='password'],input[type='text'],select{
+    padding-left: 10px;
+    font-size: 16px;
+    color: gray;
+}
+input,select{
+    width: 250px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+}
+select{
+    width: 260px;
+}
+.login-form-table  th, td, .signup-form-table  th, td{
+    border: none;
+}
+.login-form-button, .signup-form-button, input[type='submit']{
+    width: 250px;
+    height: 50px;
+    background-color: rgb(72, 255, 72);
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.login-form-button:hover, .signup-form-button:hover, input[type='submit']:hover{
+    transform: translateY(-5px);
+    box-shadow: 1px 1px 1px 1px black;
+}
+.hidden-login-page-frame{
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.hidden-login-page-card{  
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden-signup-page-frame{
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.hidden-signup-page-card{
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+nav ul li{
+    width: 130px;
+    height: 48px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    list-style: none;
+}
+nav ul li:hover , .active{
+    border-bottom: 5px solid rgb(62, 62, 255);
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+    color: rgb(62, 62, 255);
+}
+/* ------------------------------------------------------------------HOME PAGE SETUP-------------------------------------------------------------------------- */
+.home-welcom-div{
+    width: 97.5vw;
+    height: 150px;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgba(62, 62, 255,0.7);
+    color: white;
+    border-radius: 5px;
+    display: flex;
+}
+.home-welcom-div  h2,p{
+    width: 60%;
+    padding-top: 20px;
+}
+.home-welcom-div .Show-date {
+    width: 200px;
+}
+.home-Sessions-table{
+    width: 97.5vw;
+    height: 150px;
+    margin: 10px;
+    padding: 10px;
+}
+.home-Sessions-table table{
+    width: 97vw;
+    text-align: center;
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+.home-Sessions-table table td,th{
+    border: 1px solid gray;
+    padding: 10px;
+}
+.home-Sessions-table button{
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(62, 62, 255,0.7);
+    color: white;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.home-Sessions-table button:hover{
+    border: 1px solid rgb(62, 62, 255);
+    background: white;
+    color: rgb(62, 62, 255);
+}
+/* -----------------------------------------------------------------All DOCTORS PAGE SET UP---------------------------------------------------------------------- */
+
+.alldoctor-filters-header{
+    width: 97.5vw;
+    height: 50px;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgba(62, 62, 255,0.7);
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+#filter-title{
+    margin-right: 10px;
+}
+.alldoctor-Sessions-table{
+    width: 97.5vw;
+    height: 150px;
+    margin: 10px;
+    padding: 10px;
+}
+.alldoctor-Sessions-table .Deletebtn, .addbtn{
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #f84040;
+    color: white;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.addbtn{
+    background: #47e22f;
+    margin-left: 10px;
+}
+.addbtn:hover{
+    border: 1px solid #47e22f;
+    background: white;
+    color: #47e22f;
+}
+.alldoctor-Sessions-table .Deletebtn:hover{
+    border: 1px solid #f84040;
+    background: white;
+    color: #f84040;
+}
+
+.alldoctor-Sessions-table table{
+    width: 97.5vw;
+    text-align: center;
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+.alldoctor-Sessions-table table td,th{
+    border: 1px solid gray;
+    padding: 10px;
+}
+.alldoctor-Sessions-table button{
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(62, 62, 255,0.7);
+    color: white;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.alldoctor-Sessions-table button:hover{
+    border: 1px solid rgb(62, 62, 255);
+    background: white;
+    color: rgb(62, 62, 255);
+}
+.hidden-doctor-detail{
+    height: 93.2vh;
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hidden-doctor-card{
+    width: 600px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    overflow-y: scroll;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0px 0px 10px 2px gray;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+.hidden-doctor-card table{
+    width: 380px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+.hidden-doctor-card table td{
+    padding: 10px;
+}
+.hidden-doctor-card .allotbtn, #closebtn ,#bookbtn, .mysession-Sessions-table .allotbtn{
+    width: 150px;
+    height: 30px;
+    background-color: rgb(62, 62, 255);
+    border-radius: 5px;
+    border: none;
+    color: white;
+    transition: 0.5s;
+}
+#closebtn{
+    background-color: #f84040;
+}
+.hidden-doctor-card .allotbtn:hover ,#bookbtn:hover  , .mysession-Sessions-table .allotbtn:hover{
+    transform: none;
+    box-shadow: none;
+    border: 1px solid rgb(62, 62, 255);
+    background: white;
+    color: rgb(62, 62, 255);
+}
+#closebtn:hover{
+    border: 1px solid #f84040;
+    background: white;
+    color: #f84040;
+}
+.hidden-doctor-card .remove-data-table th{
+    border: none;
+}
+.hidden-doctor-card .pbooking-table select{
+    width: 120px;
+}
+.hidden-doctor-card .pbooking-table{
+    width: 600px;
+}
+.hidden-doctor-card .pbooking-table tr{
+    border: 1px solid black;
+}
+/* -----------------------------------------------------------------MY SESSIONS PAGE SETUP----------------------------------------------------------------------- */
+
+.mysession-filters-header{
+    width: 97.5vw;
+    height: 50px;
+    margin: 10px;
+    padding: 10px;
+    background-color: rgba(62, 62, 255,0.7);
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.mysession-Sessions-table{
+    width: 97.5vw;
+    height: 150px;
+    margin: 10px;
+    padding: 10px;
+}
+.mysession-Sessions-table table{
+    width: 97.5vw;
+    text-align: center;
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+.mysession-Sessions-table table td,th{
+    border: 1px solid gray;
+    padding: 10px;
+}
+.mysession-Sessions-table  .Deletebtn{
+    width: 150px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #f84040;
+    color: white;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.mysession-Sessions-table .Deletebtn:hover{
+    border: 1px solid #f84040;
+    background: white;
+    color: #f84040;
+}
+input[type='date']{
+    padding-left: 10px;
+    font-size: 16px;
+}
+/* ----------------------------------------------------------------PROFIL PAGE SET UP---------------------------------------------------------------------------- */
+.profile-Sessions-form, .Dprofile-Sessions-form{
+    margin: 10px;
+    width: 98.5vw;
+    height: 100%;
+    border-radius: 5px;
+    background-color: rgba(62, 62, 255,0.7);
+}
+.profile-session-div2, .Dprofile-session-div2{
+    width: 98.5vw;
+    height: 630px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-Sessions-form form, .Dprofile-Sessions-form form{
+    width: 500px;
+    height: 600px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 2px rgb(60, 59, 59);
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Dprofile-Sessions-form form{
+    width: 800px;
+}
+.profile-Sessions-form form table td, .Dprofile-Sessions-form form table td{
+    text-align: center;
+    padding: 10px;
+}
+.profile-Sessions-form input[type='number'],input[type='tel']{
+    padding-left: 10px;
+}
+.Dprofile-Sessions-form input[type='number'],input[type='tel']{
+    padding-left: 10px;
+}
+.profile-Sessions-form select{
+    width: 190px;
+    margin-left: 10px;
+}
+.profile-Sessions-form form input[type='submit'], .logoutbtn{
+    width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(62, 62, 255);
+    color: white;
+}
+.logoutbtn{
+    margin-top: 1%;
+    margin-left: 85%;
+    background-color: #f84040;
+    transition: 0.5s;
+}
+.profile-Sessions-form form input[type='submit']:hover{
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgb(62, 62, 255);
+    color: rgb(62, 62, 255);
+}
+.logoutbtn:hover{
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid #f84040;
+    color: #f84040;
+    transform: translateY(-5px);
+    box-shadow: 1px 1px 1px 1px black;
+    cursor: pointer;
+}
+
+
+/* ----------------------------------------------------------------ALERT MESSAGE UI COMMON FOR ALL------------------------------------------------------------- */
+.alert-box{
+    width: 100vw;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -50px;
+    transition: 0.5s;
+}
+.alert-msg{
+    width: 400px;
+    height: 50px;
+    border-radius: 5px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    animation: popup 5s ease-out;
+}
+@keyframes popup{
+    0%{
+        transform: translateY(-10px) scale(0);
+    }
+    10%{
+        transform: translateY(60px) scale(1);
+    }
+    60%{
+        transform: translateY(60px) scale(1);
+    }
+    100%{
+        transform: translateY(-10px) scale(0);
+    }
+}

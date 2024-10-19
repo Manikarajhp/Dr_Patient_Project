@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for("static",filename='style.css')}}">
+</head>
+<body>
+    {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category,message in messages %}
+        <div class="alert-box">
+            <div class="alert-msg" style="background-color:{{category}};">{{message}}</div>
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <main>
+        <header class="header">
+            <h1 class="header-web-name">Dr.Patient | <sub>Health is Wealth.</sub></h1>
+            <nav>
+                <ul>
+                    <a href="/phome"><li>Home</li></a>
+                    <a href="/palldoctors"><li class="active">All Doctors</li></a>
+                    <a href="/pmysessions"><li>My Sessions</li></a>
+                    <a href="/pmydoctor"><li>My Doctors</li></a>
+                    <a href="/pprofile"><li>Profile</li></a>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <div class="hidden-doctor-detail">
+                <div class="hidden-doctor-card">
+                    <table>
+                        <tr>
+                            <td>Name</td>
+                            <td>{{info.ptName}}</td>
+                        </tr>
+                        <tr>
+                            <td>Mobile</td>
+                            <td>{{info.ptMobile}}</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>{{info.ptEmail}}</td>
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            <td>{{info.ptGender}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><a href="/dmysessions"><button id="closebtn">Close</button></a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+       </section>
+    </main>
+</body>
+</html>

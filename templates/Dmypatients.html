@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category,message in messages %}
+        <div class="alert-box">
+            <div class="alert-msg" style="background-color:{{category}};">{{message}}</div>
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <main>
+        <header class="header">
+            <h1 class="header-web-name">Dr.Patient | <sub>Health is Wealth.</sub></h1>
+            <nav>
+                <ul>
+                    <a href="/dhome"><li>Dashboard</li></a>
+                    <a href="/dmyappointments"><li>My Appointments</li></a>
+                    <a href="/dmysessions"><li>My Sessions</li></a>
+                    <!-- <a href="/dmypatients"><li class="active">My Patients</li></a> -->
+                    <a href="/dprofile"><li>Profile</li></a>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <div class="tab">
+                <div class="alldoctor-filters-header">
+                    <h1 id="filter-title">Filter By : </h1>
+                    <form action="">
+                        <select name="">
+                            <option value="name">Name</option>
+                            <option value="city">City</option>
+                            <option value="specialist">Specialist</option>
+                        </select>
+                        <input type="text" name="" placeholder="Search">
+                        <input type="submit" value="Filter">
+                    </form>
+                </div>
+                <div class="alldoctor-Sessions-table">
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Mobile</th>
+                            <th>City</th>
+                            <th>Gender</th>
+                            <th>About</th>
+                        </tr>
+                        <tr>
+                            <td>Sankar</td>
+                            <td>9875678475</td>
+                            <td>Chennai</td>
+                            <td>Male</td>
+                            <td><button onclick="open1()">About Me</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="hidden-doctor-detail">
+                <div class="hidden-doctor-card">
+                    <table>
+                        <tr>
+                            <td>Name</td>
+                            <td>Sankar</td>
+                        </tr>
+                        <tr>
+                            <td>Mobile</td>
+                            <td>9875678475</td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>sankar123@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td>Specialist</td>
+                            <td>Heart Specialis</td>
+                        </tr>
+                        <tr>
+                            <td>Hospital Address</td>
+                            <td>Chennai</td>
+                        </tr>
+                        <tr>
+                            <td>Appointments</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td><a href=""><button>Book</button></a></td>
+                            <td><button onclick="close1()" id="closebtn">Close</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        const detail = document.querySelector('.hidden-doctor-detail')
+        const page = document.querySelector('.tab')
+        function open1(){
+            detail.style.display = 'flex';
+            page.style.display = 'none';
+        }
+        function close1(){
+            detail.style.display = 'none';
+            page.style.display = 'block';
+
+        }
+        
+    </script>
+</body>
+</html>

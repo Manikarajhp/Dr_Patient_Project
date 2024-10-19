@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category,message in messages %}
+        <div class="alert-box">
+            <div class="alert-msg" style="background-color:{{category}};">{{message}}</div>
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <main>
+        <header class="header">
+            <h1 class="header-web-name">Dr.Patient | <sub>Health is Wealth.</sub></h1>
+            <nav>
+                <ul>
+                    <a href="/phome"><li>Home</li></a>
+                    <a href="/palldoctors"><li>All Doctors</li></a>
+                    <a href="/pmysessions"><li>My Sessions</li></a>
+                    <a href="/pmydoctor"><li>My Doctors</li></a>
+                    <a href="/pprofile"><li class="active">Profile</li></a>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <div class="profile-Sessions-form">
+                <a href="/index" onclick="return confirm('Are you sure to Logout ?')"><button class="logoutbtn" >Logout</button></a>
+                <div class="profile-session-div2">
+                    <form action="/ProfileUpdatePatient" method="post">
+                        <table>
+                            <tr>
+                                <td>Full Name</td>
+                                <td><input type="text" name="NAME" value="{{info.ptName}}"></td>
+                            </tr>
+                            <tr>
+                                <td>Mobile</td>
+                                <td><input type="tel" name="MOBILE" id="" value="{{info.ptMobile}}"></td>
+                            </tr>
+                            <tr>
+                                <td>Gender</td>
+                                <td>
+                                    {{info.ptGender}}
+                                    <select name="GENDER" id="">
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="others">Others</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td><input type="email" name="EMAIL" value="{{info.ptEmail}}"></td>
+                            </tr>
+                            <tr>
+                                <td>Address</td>
+                                <td><input type="text" name="ADDRESS" value="{{info.ptAddress}}"></td>
+                            </tr>
+                            <tr>
+                                <td>City</td>
+                                <td><input type="text" name="CITY" value="{{info.ptCity}}"></td>
+                            </tr>
+                            <tr>
+                                <td>Pincode</td>
+                                <td><input type="number"  name="PINCODE" value="{{info.ptPincode}}"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><input type="submit" value="Update"></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

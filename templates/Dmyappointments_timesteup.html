@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for("static",filename='style.css')}}">
+</head>
+<body>
+    {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category,message in messages %}
+        <div class="alert-box">
+            <div class="alert-msg" style="background-color:{{category}};">{{message}}</div>
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <main>
+        <header class="header">
+            <h1 class="header-web-name">Dr.Patient | <sub>Health is Wealth.</sub></h1>
+            <nav>
+                <ul>
+                    <a href="/dhome"><li>Dashboard</li></a>
+                    <a href="/dmyappointments"><li class="active">My Appointments</li></a>
+                    <a href="/dmysessions"><li>My Sessions</li></a>
+                    <!-- <a href="/dmypatients"><li>My Patients</li></a> -->
+                    <a href="/dprofile"><li>Profile</li></a>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            
+            <div class="hidden-doctor-detail">
+                <div class="hidden-doctor-card">
+                    <div>
+                        <table class="remove-data-table">
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Event</th>
+                            </tr>
+                             {% for info in infos %}
+                                 <tr>
+                                     <td>{{info.apDate}}</td>
+                                     <td>{{info.apTime}}</td>
+                                     <td><a href="{{url_for("delete_appointments",date=info.apDate,time=info.apTime,day=info.apDay)}}"><button id="closebtn">Remove</button></a></td>
+                                 </tr>
+                             {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

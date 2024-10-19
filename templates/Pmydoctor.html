@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category,message in messages %}
+        <div class="alert-box">
+            <div class="alert-msg" style="background-color:{{category}};">{{message}}</div>
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <main>
+        <header class="header">
+            <h1 class="header-web-name">Dr.Patient | <sub>Health is Wealth.</sub></h1>
+            <nav>
+                <ul>
+                    <a href="/phome"><li>Home</li></a>
+                    <a href="/palldoctors"><li>All Doctors</li></a>
+                    <a href="/pmysessions"><li>My Sessions</li></a>
+                    <a href="/pmydoctor"><li class="active">My Doctors</li></a>
+                    <a href="/pprofile"><li>Profile</li></a>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <div class="tab">
+                <div class="alldoctor-filters-header">
+                    <h1 id="filter-title">Filter By : </h1>
+                    <datalist id="suggestions">
+                        {% for info in infos %}
+                            <option value="{{info.drName}}">{{info.drName}}</option>
+                            <option value="{{info.drSpecialist}}">{{info.drSpecialist}}</option>
+                            <option value="{{info.drHospitalCity}}">{{info.drHospitalCity}}</option>
+                        {% endfor %}
+                    </datalist>
+                    <form action="/search_all_doctors_fav" method="post">
+                        <select name="FILTER">
+                            <option value="name">Name</option>
+                            <option value="city">City</option>
+                            <option value="specialist">Specialist</option>
+                        </select>
+                        <input type="text" name="VALUE" placeholder="Search" list="suggestions"required>
+                        <input type="submit" value="Filter">
+                    </form>
+                </div>
+                <div class="alldoctor-Sessions-table">
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Mobile</th>
+                            <th>City</th>
+                            <th>Specialist</th>
+                            <th>About</th>
+                        </tr>
+                        {% for info in infos%}
+                            <tr>
+                                <td>{{info.drName}}</td>
+                                <td>{{info.drMobile}}</td>
+                                <td>{{info.drHospitalCity}}</td>
+                                <td>{{info.drSpecialist}}</td>
+                                <td><a href="{{url_for("viewDprofile",id=info.drId)}}"><button>About Me</button></a></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        const detail = document.querySelector('.hidden-doctor-detail')
+        const page = document.querySelector('.tab')
+        function open1(){
+            detail.style.display = 'flex';
+            page.style.display = 'none';
+        }
+        function close1(){
+            detail.style.display = 'none';
+            page.style.display = 'block';
+
+        }
+        
+    </script>
+</body>
+</html>

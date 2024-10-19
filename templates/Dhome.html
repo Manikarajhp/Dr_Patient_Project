@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category,message in messages %}
+        <div class="alert-box">
+            <div class="alert-msg" style="background-color:{{category}};">{{message}}</div>
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <main>
+        <header class="header">
+            <h1 class="header-web-name">Dr.Patient | <sub>Health is Wealth.</sub></h1>
+            <nav>
+                <ul>
+                    <a href="/dhome"><li class="active">Dashboard</li></a>
+                    <a href="/dmyappointments"><li>My Appointments</li></a>
+                    <a href="/dmysessions"><li>My Sessions</li></a>
+                    <!-- <a href="/dmypatients"><li>My Patients</li></a> -->
+                    <a href="/dprofile"><li>Profile</li></a>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <div class="home-welcom-div">
+                <div>
+                    <h1>Welcome!</h1>
+                    <h2>Dr.{% if info.drGender=="male" %} Mr {% else %} Ms {% endif %} {{info.drName}}</h2>
+                    <p>"Your dedication to healthcare is truly appreciated.
+                        Every patient interaction is an opportunity to shine.
+                        Make every diagnosis a positive turning point.
+                        Your kindness and care inspire hope and healing.
+                        Have a fantastic day!"</p>
+                </div>
+                <div class="Show-date">
+                    <h1>{{currentdate}}</h1>
+                </div>
+            </div>
+            <div class="home-Sessions-table">
+                <table>
+                    <tr>
+                        <th>Session Title</th>
+                        <th>Session Date</th>
+                        <th>Session Time</th>
+                        <th>Session Event</th>
+                    </tr>
+                    {% for sinfo in infos %}
+                        <tr>
+                            <td>{{sinfo.apTitle}}</td>
+                            <td>{{sinfo.apDate}}</td>
+                            <td>{{sinfo.apTime}}</td>
+                            <td><a href="/dmysessions"><button>More</button></a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

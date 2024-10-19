@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category,message in messages %}
+        <div class="alert-box">
+            <div class="alert-msg" style="background-color:{{category}};">{{message}}</div>
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <main>
+        <header class="header">
+            <h1 class="header-web-name">Dr.Patient | <sub>Health is Wealth.</sub></h1>
+            <nav>
+                <ul>
+                    <a href="/dhome"><li>Dashboard</li></a>
+                    <a href="/dmyappointments"><li class="active">My Appointments</li></a>
+                    <a href="/dmysessions"><li>My Sessions</li></a>
+                    <!-- <a href="/dmypatients"><li>My Patients</li></a> -->
+                    <a href="/dprofile"><li>Profile</li></a>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <div class="tab">
+                <div class="alldoctor-filters-header">
+                    <h1>{{currentdate}}</h1>
+                    <a href="/dmyappointments_addtimesteup"><button class="addbtn">Add</button></a>
+                </div>
+                <div class="alldoctor-Sessions-table">
+                    <table>
+                        <tr>
+                            <th>S.no</th>
+                            <th>Day</th>
+                            <th>Appointments Alloted</th>
+                            <th>Appointments Booked</th>
+                            <th>Event</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Monday</td>
+                            <td>{{info.Monday}}</td>
+                            <td>{{infos.Monday}}</td>
+                            <td><a href="{{url_for("dmyappointments_timesteup",day = "Monday")}}"><button>Edit</button></td>
+                        </tr>
+                        <tr></tr>
+                            <td>2</td>
+                            <td>Tuesday</td>
+                            <td>{{info.Tuesday}}</td>
+                            <td>{{infos.Tuesday}}</td>
+                            <td><a href="{{url_for("dmyappointments_timesteup",day = "Tuesday")}}"><button>Edit</button></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Wednesday</td>
+                            <td>{{info.Wednesday}}</td>
+                            <td>{{infos.Wednesday}}</td>
+                            <td><a href="{{url_for("dmyappointments_timesteup",day = "Wednesday")}}"><button>Edit</button></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Thursday</td>
+                            <td>{{info.Thursday}}</td>
+                            <td>{{infos.Thursday}}</td>
+                            <td><a href="{{url_for("dmyappointments_timesteup",day = "Thursday")}}"><button>Edit</button></td>
+                        </tr>
+                        <tr></tr>
+                            <td>5</td>
+                            <td>Friday</td>
+                            <td>{{info.Friday}}</td>
+                            <td>{{infos.Friday}}</td>
+                            <td><a href="{{url_for("dmyappointments_timesteup",day = "Friday")}}"><button>Edit</button></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Saturday</td>
+                            <td>{{info.Saturday}}</td>
+                            <td>{{infos.Saturday}}</td>
+                            <td><a href="{{url_for("dmyappointments_timesteup",day = "Saturday")}}"><button>Edit</button></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Sunday</td>
+                            <td>{{info.Sunday}}</td>
+                            <td>{{infos.Sunday}}</td>
+                            <td><a href="{{url_for("dmyappointments_timesteup",day = "Sunday")}}"><button>Edit</button></a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

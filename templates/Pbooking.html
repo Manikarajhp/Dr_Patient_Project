@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for("static",filename='style.css')}}">
+</head>
+<body>
+    {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category,message in messages %}
+        <div class="alert-box">
+            <div class="alert-msg" style="background-color:{{category}};">{{message}}</div>
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <main>
+        <header class="header">
+            <h1 class="header-web-name">Dr.Patient | <sub>Health is Wealth.</sub></h1>
+            <nav>
+                <ul>
+                    <a href="/phome"><li>Home</li></a>
+                    <a href="/palldoctors"><li class="active">All Doctors</li></a>
+                    <a href="/pmysessions"><li>My Sessions</li></a>
+                    <a href="/pmydoctor"><li>My Doctors</li></a>
+                    <a href="/pprofile"><li>Profile</li></a>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <div class="hidden-doctor-detail">
+                <div class="hidden-doctor-card">
+                    <div>
+                    <table class="pbooking-table">
+                        <form action="{{url_for("pbooking",id=drid)}}" method="post">
+                            <tr>
+                                <td>Select Day</td>
+                                <td>
+                                <select name="DAY" id="">
+                                    <option value="Monday">Monday</option>
+                                    <option value="Tuesday">Tuesday</option>
+                                    <option value="Wednesday">Wednesday</option>
+                                    <option value="Thursday">Thursday</option>
+                                    <option value="Friday">Friday</option>
+                                    <option value="Saturday">Saturday</option>
+                                    <option value="Sunday">Sunday</option>
+                                </select>
+                                </td>
+                                <td><a><button class="addbtn">Show Dates</button></a></td>
+                            </tr>
+                        </form>
+                            {% for info in infos %}
+                                
+                            <form action="{{url_for("pbooking_app",id=drid,date=info.apDate,time=info.apTime)}}" method="post">
+                                <tr>
+                                    <td>Title</td>
+                                    <td><input type="text" name="Session_Title" required></td>
+                                </tr>
+                                <tr>
+                                    <td>{{info.apDate}}</td>
+                                    <td>{{info.apTime}}</td>
+                                    <td><a href=""><button class="allotbtn">Book</button></a></td>
+                                </tr>
+                            </form>
+                            {% endfor %}
+                    </table>
+                </div>
+                </div>
+            </div>
+       </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category,message in messages %}
+        <div class="alert-box">
+            <div class="alert-msg" style="background-color:{{category}};">{{message}}</div>
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <main>
+        <header class="header">
+            <h1 class="header-web-name">Dr.Patient | <sub>Health is Wealth.</sub></h1>
+            <nav>
+                <ul>
+                    <a href="/phome"><li>Home</li></a>
+                    <a href="/palldoctors"><li>All Doctors</li></a>
+                    <a href="/pmysessions"><li class="active">My Sessions</li></a>
+                    <a href="/pmydoctor"><li>My Doctors</li></a>
+                    <a href="/pprofile"><li>Profile</li></a>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <div class="tab">
+                <div class="mysession-filters-header">
+                    <h1 id="filter-title">Search : </h1>
+                    <form action="search_app_by_date" method="post">
+                        <input type="date" name="DATE" date-format="mm-dd-yyyy" required>
+                        <input type="submit" value="Filter">
+                    </form>
+                </div>
+                <div class="mysession-Sessions-table">
+                    <table>
+                        <tr>
+                            <th>Session Title</th>
+                            <th>Session Date</th>
+                            <th>Session Time</th>
+                            <th>Doctor Name</th>
+                            <th>Session Event</th>
+                        </tr>
+                        {% for info in infos %}
+                            <tr>
+                                <td>{{info.apTitle}}</td>
+                                <td>{{info.apDate}}</td>
+                                <td>{{info.apTime}}</td>
+                                <td>{{info.drName}}</td>
+                                <td><a href="{{url_for("delete_app",id=info.drId,date=info.apDate,time=info.apTime,flag=0)}}" onclick="return confirm('Are you sure to Delete ?')"><button class="Deletebtn">Delete</button></a></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/animations.css">  
+    <link rel="stylesheet" href="css/main.css">  
+    <link rel="stylesheet" href="css/index.css">
+    <title>Landing_page</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category,message in messages %}
+        <div class="alert-box">
+            <div class="alert-msg" style="background-color:{{category}};">{{message}}</div>
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <main>
+        <header class="header">
+            <h1 class="header-web-name">Dr.Patient | <sub>Health is Wealth.</sub></h1>
+            <button class="header-login-button" onclick="AppointmentClick()">Login/Register</button>
+        </header>
+        <section class="section">
+            <div class="section-container">
+                <p class="section-quote">
+                    <center>Empowering healthier lives, one connection at a time. Simplify your care, elevate your well-being. Together, we thrive.</center>
+                </p>
+                <center>
+                    <button class="section-login-button" onclick="AppointmentClick()">Book Your Appointment</button>
+                </center>
+            </div>
+            <div class="hidden-login-page-frame">
+                <div class="hidden-login-page-card">
+                    <form action="/login" method="post" class="login-form"> 
+                        <table class="login-form-table" cellspacing="20px">
+                            <tr>
+                                <th><h1>Login</h1></th>
+                            </tr>
+                            <tr>
+                                <td><input type="email" name="USERMAIL" id="" placeholder="E-mail" required ></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input 
+                                      type="password" 
+                                      name="USERPASSWORD" 
+                                      placeholder="Password" 
+                                      required
+                                      maxlength="8">
+                                  </td>                                  
+                            </tr>
+                            <tr>
+                                <td><input type="submit" value="Login"></td>
+                            </tr>
+                            <tr>
+                                <td><button class="signup-form-button" onclick="SignupClick()">New User</button></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div class="hidden-signup-page-frame">
+                <div class="hidden-signup-page-card">
+                    <form action="/signup" method="post" class="signup-form"> 
+                        <table class="signup-form-table" cellspacing="10px">
+                            <tr>
+                                <th><h1>Sign Up</h1></th>
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="USERNAME" id="" placeholder="Your Name" required></td>
+                            </tr>
+                            <tr>
+                                <td><input type="email" name="USERMAIL" id="" placeholder="E-mail" required></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select name="USERROLL" id="">
+                                        <option value="doctor">Doctor</option>
+                                        <option value="datient">Patient</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input 
+                                      type="password" 
+                                      name="USERPASSWORD" 
+                                      placeholder="Password" 
+                                      required
+                                      maxlength="8">
+                                  </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input 
+                                      type="password" 
+                                      name="USERPASSWORDCONFIRM" 
+                                      placeholder="Password" 
+                                      required
+                                      maxlength="8">
+                                  </td>
+                            </tr>
+                            <tr>
+                                <td><input type="submit" value="Sign Up"></td>
+                            </tr>
+                            <tr>
+                                <td><button class="login-form-button" onclick="LoginClick()">Login</button></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        const LoginPageFrame = document.querySelector('.hidden-login-page-frame');
+        const LoginPageCard = document.querySelector('.hidden-login-page-card');
+        const LandingPage = document.querySelector('.section-container');
+        const SignupPageFrame = document.querySelector('.hidden-signup-page-frame');
+        const SignupPageCard = document.querySelector('.hidden-signup-page-card');
+        const HeaderLoginBtn = document.querySelector('.header-login-button');
+        HeaderLoginBtn.addEventListener('click',AppointmentClick);
+
+        function AppointmentClick(){
+            LandingPage.style.display = 'none';
+            LoginPageFrame.style.display = 'flex';
+            LoginPageCard.style.display = 'flex';
+            HeaderLoginBtn.innerHTML = 'Back';
+            HeaderLoginBtn.removeEventListener('click',AppointmentClick);
+            HeaderLoginBtn.addEventListener('click',BackToLand);
+        }
+        function LoginClick(){
+            LandingPage.style.display = 'none';
+            SignupPageFrame.style.display = 'none';
+            SignupPageCard.style.display = 'none';
+            LoginPageFrame.style.display = 'flex';
+            LoginPageCard.style.display = 'flex';
+        }
+        function SignupClick(){
+            LandingPage.style.display = 'none';
+            LoginPageFrame.style.display = 'none';
+            LoginPageCard.style.display = 'none';
+            SignupPageFrame.style.display = 'flex';
+            SignupPageCard.style.display = 'flex';
+        }
+        function BackToLand(){
+            LandingPage.style.display = 'block';
+            SignupPageFrame.style.display = 'none';
+            SignupPageCard.style.display = 'none';
+            LoginPageFrame.style.display = 'none';
+            LoginPageCard.style.display = 'none';
+            HeaderLoginBtn.innerHTML = 'Login/Register';
+            HeaderLoginBtn.removeEventListener('click',BackToLand);
+            HeaderLoginBtn.addEventListener('click',AppointmentClick);
+        }
+    </script>
+</body>
+</html>
