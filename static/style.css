@@ -505,3 +505,44 @@ input[type='date']{
         transform: translateY(-10px) scale(0);
     }
 }
+
+.section-chat{
+    width: 97vw;
+    height: 80vh;
+    background-color: #cccccc;
+    margin-left: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    overflow-y: scroll;
+}
+.section-chat table{
+    width: 100%;
+}
+.section-chat table td{
+    width: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.footer-chat{
+    width: 97vw;
+    height: 60px;
+    background-color: #cccccc;
+    margin-left: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer-chat #prompt-chat{
+    margin-left: 20px;
+    width: 900px;
+    border: 1px solid black;
+}
+.footer-chat #send-chat{
+    margin-left: 270px;
+}
+.footer-chat #send-chat:hover{
+    transform: none;
+}

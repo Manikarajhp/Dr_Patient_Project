@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <main>
+        <header class="header">
+            <h1 class="header-web-name">Dr.Patient | <sub>Health is Wealth.</sub></h1>
+            <nav>
+                <ul>
+                    <a href="/phome"><li>Home</li></a>
+                    <a href="/palldoctors"><li>All Doctors</li></a>
+                    <a href="/pmysessions"><li>My Sessions</li></a>
+                    <a href="/pmydoctor"><li>My Doctors</li></a>
+                    <a href="/pprofile"><li>Profile</li></a>
+                    <a href="/chat_bot" class="active"><li>Chat Bot</li></a>
+                </ul>
+            </nav>
+        </header>
+        <section class="section-chat">
+            <table>
+                {% for info in infos %}
+                
+                    <tr>
+                        <td></td>
+                        <td style="background-color: rgb(215, 255, 156);border-radius: 10px;">{{info.you}}</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: rgb(179, 179, 255);border-radius: 10px;">{{info.ai}}</td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </section>
+        <footer class="footer-chat">
+            <form action="/chat_bot" method="post">
+                <input type="text" name="PROMPT" id="prompt-chat">
+                <input type="submit" value="Send" id="send-chat">
+            </form>
+        </footer>
+    </main>
+</body>
+</html>

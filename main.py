@@ -1,7 +1,12 @@
 from flask import Flask,render_template,request,redirect,flash
 import pymysql as ps
+import google.generativeai as genai
 import datetime
 
+genai.configure(api_key="AIzaSyDEJLV4pFRqkm-Bk7UdHvN83EtaSUhYaVY")
+model = genai.GenerativeModel('gemini-pro')    
+
+# Funtion used to get output
 try:
     con=ps.connect(host="localhost",user="root",password="h13143m17",database="Hospital",cursorclass=ps.cursors.DictCursor)
     cursor=con.cursor()
@@ -250,6 +255,15 @@ def search_all_doctors_fav():
             except:
                 flash("Data not found",warning)
     return render_template("Pmydoctor.html", infos = datas)
+
+chat_datas=[]
+@app.route('/chat_bot',methods=['POST','GET'])
+def chat_bot():
+    if request.method== 'POST':
+        prompt = request.form['PROMPT']
+        response = model.generate_content(prompt)
+        chat_datas.append({"ai":response.text,'you':prompt})
+    return render_template('chatbot.html',infos=chat_datas)
 # -------------------------------------------------------------DOCTOR PAGE ROUTING SETUPS-------------------------------------------------------------------
 
 @app.route('/dhome')
