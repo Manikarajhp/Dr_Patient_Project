@@ -3,7 +3,7 @@ import pymysql as ps
 import google.generativeai as genai
 import datetime
 
-genai.configure(api_key="AIzaSyDEJLV4pFRqkm-Bk7UdHvN83EtaSUhYaVY")
+genai.configure(api_key="**********Y")
 model = genai.GenerativeModel('gemini-pro')    
 
 # Funtion used to get output
